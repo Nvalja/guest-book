@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import { GuestList } from './components/GuestList/';
+import { GuestForm } from './components/GuestForm/';
+const API_URL = 'http://localhost:5000/api';
+
 
 function App() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    load();
+  }, []);
+
+  const load = async () => {
+    const res = await fetch(API_URL);
+    const data = await res.json();
+
+    console.log(data);
+  }
+
+  const handleUser = (user) => {
+    setUsers([
+      ...users,
+      user
+    ])
+  }
+
+  console.log(users);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GuestList users={users} />
+      <GuestForm handleUser={handleUser} />
     </div>
   );
 }
