@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { GuestList } from './components/GuestList/';
 import { GuestForm } from './components/GuestForm/';
-const API_URL = '/api';
-
+const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -26,7 +25,6 @@ function App() {
     ])
   }
 
-  console.log(users);
   return (
     <div className="App">
       <GuestList users={users} />
