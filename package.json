@@ -1,6 +1,5 @@
 {
   "name": "guest-book",
-  "homepage": "https://nvalja.github.io/guest-book",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +7,7 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.1",
     "express": "^4.17.1",
+    "gh-pages": "^3.1.0",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -15,8 +15,11 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
+    "start": "node server.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "server": "nodemon server.js",
-    "start": "react-scripts start",
+    "client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

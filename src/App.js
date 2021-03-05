@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { GuestList } from './components/GuestList/';
 import { GuestForm } from './components/GuestForm/';
-const API_URL = 'http://localhost:5000/api';
+const API_URL = '/api';
 
 
 function App() {
