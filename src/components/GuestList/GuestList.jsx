@@ -8,8 +8,8 @@ export const GuestList = ({ users }) => {
       <h2>Guest list</h2>
       {users.map(user => (
         <div key={Math.random()}>
-          <span>{user.name}</span>
-          <p>{user.text}</p>
+          <span style={{color: user.nameColor}}>{user.name}</span>
+          <p style={{color: user.textColor}}>{user.text}</p>
         </div>
       ))}
     </div>

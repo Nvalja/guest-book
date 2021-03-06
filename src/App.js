@@ -2,28 +2,27 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { GuestList } from './components/GuestList/';
 import { GuestForm } from './components/GuestForm/';
-const API_URL = process.env.REACT_APP_API_URL;
+import { getUsers, addUser } from './api/api';
+
 
 function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    load();
+    loadUsers();
   }, []);
 
-  const load = async () => {
-    const res = await fetch(API_URL);
-    const data = await res.json();
+  const loadUsers = async () => {
+    const loadedUsers = await getUsers();
 
-    console.log(data);
-  }
+    setUsers(loadedUsers);
+  };
 
-  const handleUser = (user) => {
-    setUsers([
-      ...users,
-      user
-    ])
-  }
+
+  const handleUser = async (user) => {
+    await addUser(user)
+    loadUsers();
+  };
 
   return (
     <div className="App">

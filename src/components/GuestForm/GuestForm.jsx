@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import './GuestForm.scss';
 
+const defaultUser = {
+  name: '',
+  text: '',
+  nameColor: '#000000',
+  textColor: '#000000'
+}
+
 export const GuestForm = ({ handleUser }) => {
-  const [query, setQuery] = useState({name: '', text: ''})
+  const [query, setQuery] = useState(defaultUser);
 
   const handleInputs = (event) => {
     const { name, value } = event.target;
@@ -16,7 +23,7 @@ export const GuestForm = ({ handleUser }) => {
     event.preventDefault();
 
     handleUser(query)
-    setQuery({name: '', text: ''})
+    setQuery(defaultUser)
   };
 
   return (
@@ -34,6 +41,13 @@ export const GuestForm = ({ handleUser }) => {
           onChange={handleInputs}
         />
       </label>
+      <input
+        type="color"
+        name='nameColor'
+        className="form__color"
+        value={query.nameColor}
+        onChange={handleInputs}
+      />
       <label className="form__text-wrapper">
         <span>Enter your text</span>
         <textarea
@@ -45,6 +59,13 @@ export const GuestForm = ({ handleUser }) => {
           onChange={handleInputs}
         />
       </label>
+      <input
+        type="color"
+        name='textColor'
+        className="form__color"
+        value={query.textColor}
+        onChange={handleInputs}
+      />
 
       <input className="form__button" type="submit" value="add message"/>
     </form>
