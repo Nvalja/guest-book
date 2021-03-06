@@ -19,10 +19,17 @@ export const GuestForm = ({ handleUser }) => {
     })
   };
 
+  console.log(query);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    handleUser(query)
+    const newUser = {
+      ...query,
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+    };
+    
+    handleUser(newUser)
     setQuery(defaultUser)
   };
 
@@ -52,6 +59,7 @@ export const GuestForm = ({ handleUser }) => {
         <span>Enter your text</span>
         <textarea
           className="form__text-input"
+          wrap="soft | hard"
           name="text"
           cols="15"
           rows="10"
