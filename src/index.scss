@@ -7,7 +7,12 @@
   text-decoration: none;
 }
 
+html {
+  background-color: rgb(224, 250, 255);
+}
+
 body {
   box-sizing: border-box;
   font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 16px;
 }

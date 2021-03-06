@@ -34,48 +34,50 @@ export const GuestForm = ({ handleUser }) => {
   };
 
   return (
-    <form
-      className="form"
+    <div className="wrapper">
+      <form className="form"
       onSubmit={handleSubmit}
-    >
-      <label className="form__name-wrapper">
-        <span>Enter your name</span>
+      >
+        <label className="form__name-wrapper">
+          <span>Enter your name</span>
+          <input
+            className="form__name-input"
+            name="name"
+            type="text"
+            value={query.name}
+            onChange={handleInputs}
+          />
+        </label>
         <input
-          className="form__name-input"
-          name="name"
-          type="text"
-          value={query.name}
+          type="color"
+          name='nameColor'
+          className="form__color"
+          value={query.nameColor}
           onChange={handleInputs}
         />
-      </label>
-      <input
-        type="color"
-        name='nameColor'
-        className="form__color"
-        value={query.nameColor}
-        onChange={handleInputs}
-      />
-      <label className="form__text-wrapper">
-        <span>Enter your text</span>
-        <textarea
-          className="form__text-input"
-          wrap="soft | hard"
-          name="text"
-          cols="15"
-          rows="10"
-          value={query.text}
+        <label className="form__text-wrapper">
+          <span>Enter your text</span>
+          <textarea
+            className="form__text-input"
+            wrap="soft | hard"
+            name="text"
+            cols="15"
+            rows="10"
+            value={query.text}
+            onChange={handleInputs}
+          />
+        </label>
+        <input
+          type="color"
+          name='textColor'
+          className="form__color"
+          value={query.textColor}
           onChange={handleInputs}
         />
-      </label>
-      <input
-        type="color"
-        name='textColor'
-        className="form__color"
-        value={query.textColor}
-        onChange={handleInputs}
-      />
 
-      <input className="form__button" type="submit" value="add message"/>
-    </form>
+        <input className="form__button" type="submit" value="add message"/>
+      </form>
+    </div>
+    
   );
 }

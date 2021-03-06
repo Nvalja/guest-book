@@ -23,9 +23,6 @@ export const Guest = ({ user }) => {
           <span>{user.time}</span>
         </div>
       </div>
-      
-
-
     </div>
   );
 }
