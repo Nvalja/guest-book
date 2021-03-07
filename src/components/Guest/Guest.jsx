@@ -1,5 +1,6 @@
 import React from 'react';
 import './Guest.scss';
+import PropTypes from 'prop-types';
 
 export const Guest = ({ user }) => (
   <div className="guest">
@@ -23,3 +24,14 @@ export const Guest = ({ user }) => (
     </div>
   </div>
 );
+
+Guest.propTypes = {
+  user: PropTypes.shape({
+    nameColor: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    textColor: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    time: PropTypes.string.isRequired,
+  }).isRequired,
+};

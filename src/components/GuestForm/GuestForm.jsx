@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './GuestForm.scss';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 const defaultUser = {
   name: '',
@@ -44,7 +45,7 @@ export const GuestForm = ({ handleUser }) => {
       date: new Date().toLocaleDateString(),
       time: new Date().toLocaleTimeString(),
     };
-    
+
     handleUser(newUser);
     setQuery(defaultUser);
     setErrors(inputsError);
@@ -62,7 +63,6 @@ export const GuestForm = ({ handleUser }) => {
           ) : (
             <span>Enter your name</span>
           )}
-          
           <input
             className={classNames({
               'form__name-input': true,
@@ -124,4 +124,8 @@ export const GuestForm = ({ handleUser }) => {
       </form>
     </div>
   );
+};
+
+GuestForm.propTypes = {
+  handleUser: PropTypes.func.isRequired,
 };

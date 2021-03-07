@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import './GuestList.scss';
 import { Guest } from '../Guest';
 
@@ -60,4 +61,11 @@ export const GuestList = ({ users, handleView }) => {
       ))}
     </div>
   );
+};
+
+GuestList.propTypes = {
+  users: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  }).isRequired).isRequired,
+  handleView: PropTypes.func.isRequired,
 };

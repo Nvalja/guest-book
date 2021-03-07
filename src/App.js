@@ -54,9 +54,7 @@ function App() {
           <GuestForm handleUser={handleUser} />
         </main>
       )}
-      
     </div>
-    
   );
 }
 
