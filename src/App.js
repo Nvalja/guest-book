@@ -1,34 +1,62 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
-import { GuestList } from './components/GuestList/';
-import { GuestForm } from './components/GuestForm/';
-import { getUsers, addUser } from './api/api';
+import './App.scss';
+import { GuestList } from './components/GuestList';
+import { GuestForm } from './components/GuestForm';
+import { Header } from './components/Header';
 
+import { getUsers, addUser, getAllUsers } from './api/api';
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [loadError, setLoadError] = useState(false);
 
   useEffect(() => {
     loadUsers();
   }, []);
 
-  const loadUsers = async () => {
-    const loadedUsers = await getUsers();
+  const loadUsers = async() => {
+    try {
+      const loadedUsers = await getUsers();
 
-    setUsers(loadedUsers);
+      setLoadError(false);
+      setUsers(loadedUsers);
+    } catch (error) {
+      setLoadError(true);
+    }
   };
 
-
-  const handleUser = async (user) => {
-    await addUser(user)
+  const handleUser = async(user) => {
+    await addUser(user);
     loadUsers();
   };
 
+  const handleView = async({ target }) => {
+    try {
+      const loadedUsers = target.name === 'last'
+        ? await getUsers()
+        : await getAllUsers();
+
+      setLoadError(false);
+      setUsers(loadedUsers);
+    } catch (error) {
+      setLoadError(true);
+    }
+  };
+
   return (
-    <div className="App">
-      <GuestList users={users} />
-      <GuestForm handleUser={handleUser} />
+    <div className="app">
+      <Header />
+      {loadError ? (
+        <span>Sorry, we have problem</span>
+      ) : (
+        <main className="app__main">
+          <GuestList users={users} handleView={handleView} />
+          <GuestForm handleUser={handleUser} />
+        </main>
+      )}
+      
     </div>
+    
   );
 }
 

@@ -1,6 +1,43 @@
+@import "../../style/mixins.scss";
+
 .list {
   padding: 10px;
   max-width: 600px;
   width: 100%;
-  border: 1px solid black;
+  @include MobileScreen {
+    padding: 0;
+  }
+
+  &__buttons {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+
+    @include MobileScreen {
+      margin-bottom: 0;
+    }
+  }
+
+  &__button {
+    width: 80px;
+    height: 40px;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: rgb(8, 143, 170);
+    border: 1px solid rgb(37, 163, 189);
+    border-radius: 10px;
+    box-shadow: inset 0 1px 6px 2px rgb(77, 201, 226);
+    transition: all 0.3s;
+    &:hover {
+      box-shadow: inset 0 0 5px 1px rgb(25, 84, 92);
+      background-color: rgb(8, 143, 170);
+    }
+
+    @include MobileScreen {
+      width: 100px;
+      height: 25px;
+      margin-top: 5px;
+    }
+  }
 }
